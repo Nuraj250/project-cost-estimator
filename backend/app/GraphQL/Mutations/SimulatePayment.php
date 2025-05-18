@@ -11,8 +11,9 @@ class SimulatePayment
         return Payment::create([
             'project_id' => $args['project_id'],
             'amount' => $args['amount'],
-            'status' => 'completed'
+            'status' => 'completed',
         ]);
     }
 }
+
 

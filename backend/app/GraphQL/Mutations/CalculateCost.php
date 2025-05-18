@@ -2,8 +2,8 @@
 
 namespace App\GraphQL\Mutations;
 
-use App\Models\OfficeExpense;
 use App\Models\Project;
+use App\Models\OfficeExpense;
 
 class CalculateCost
 {
@@ -13,7 +13,7 @@ class CalculateCost
         $hours = $project->assumed_hours;
 
         $staffCost = $project->staff->sum(fn($s) => ($s->monthly_salary / 180) * $hours);
-        $officeCost = OfficeExpense::all()->sum('monthly_cost') / 180 * $hours;
+        $officeCost = OfficeExpense::sum('monthly_cost') / 180 * $hours;
         $total = $staffCost + $officeCost;
 
         return [
@@ -26,4 +26,6 @@ class CalculateCost
         ];
     }
 }
+
+
 

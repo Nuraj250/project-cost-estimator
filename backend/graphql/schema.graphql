@@ -24,20 +24,6 @@ type Payment {
   project: Project @belongsTo
 }
 
-type Query {
-  staff: [Staff!]! @all
-  officeExpenses: [OfficeExpense!]! @all
-  projects: [Project!]! @all
-  project(id: ID!): Project @find
-  payments: [Payment!]! @all
-}
-
-input ProjectInput {
-  name: String!
-  assumed_hours: Int!
-  staff_ids: [ID!]!
-}
-
 type CostBreakdown {
   project: String!
   hours: Int!
@@ -45,6 +31,14 @@ type CostBreakdown {
   office_cost: Float!
   total_cost: Float!
   cost_per_hour: Float!
+}
+
+type Query {
+  staff: [Staff!]! @all
+  officeExpenses: [OfficeExpense!]! @all
+  projects: [Project!]! @all
+  project(id: ID!): Project @find
+  payments: [Payment!]! @all
 }
 
 type Mutation {

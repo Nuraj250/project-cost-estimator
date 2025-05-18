@@ -12,9 +12,7 @@ class CreateProject
             'name' => $args['name'],
             'assumed_hours' => $args['assumed_hours'],
         ]);
-
         $project->staff()->sync($args['staff_ids']);
-
-        return $project->load('staff');
+        return $project;
     }
 }

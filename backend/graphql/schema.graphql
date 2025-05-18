@@ -2,49 +2,70 @@ type Staff {
   id: ID!
   name: String!
   monthly_salary: Float!
-}
-
-type OfficeExpense {
-  id: ID!
-  title: String!
-  monthly_cost: Float!
+  created_at: DateTime!
+  updated_at: DateTime!
 }
 
 type Project {
   id: ID!
   name: String!
   assumed_hours: Int!
+  created_at: DateTime!
+  updated_at: DateTime!
   staff: [Staff!]! @belongsToMany
+  expenses: [OfficeExpense!]! @hasMany
+  payments: [Payment!]! @hasMany
+}
+
+type OfficeExpense {
+  id: ID!
+  title: String!
+  monthly_cost: Float!
+  created_at: DateTime!
+  updated_at: DateTime!
 }
 
 type Payment {
   id: ID!
+  project_id: ID!
   amount: Float!
   status: String!
-  project: Project @belongsTo
+  created_at: DateTime!
+  updated_at: DateTime!
+  project: Project! @belongsTo
 }
 
-type CostBreakdown {
-  project: String!
-  hours: Int!
-  staff_cost: Float!
-  office_cost: Float!
-  total_cost: Float!
-  cost_per_hour: Float!
-}
-
+# Queries
 type Query {
   staff: [Staff!]! @all
-  officeExpenses: [OfficeExpense!]! @all
-  projects: [Project!]! @all
-  project(id: ID!): Project @find
+  projects: [Project!]! @field(resolver: "ProjectQuery@getAllProjects")
+  expenses: [OfficeExpense!]! @all
   payments: [Payment!]! @all
 }
 
+# Mutations
 type Mutation {
-  createStaff(name: String!, monthly_salary: Float!): Staff @create
-  createOfficeExpense(title: String!, monthly_cost: Float!): OfficeExpense @create
-  createProject(name: String!, assumed_hours: Int!, staff_ids: [ID!]!): Project @field(resolver: "App\\GraphQL\\Mutations\\CreateProject")
-  simulatePayment(project_id: ID!, amount: Float!): Payment @field(resolver: "App\\GraphQL\\Mutations\\SimulatePayment")
-  calculateCost(project_id: ID!): CostBreakdown @field(resolver: "App\\GraphQL\\Mutations\\CalculateCost")
+  # Staff CRUD
+  createStaff(name: String!, monthly_salary: Float!): Staff! @create
+  updateStaff(id: ID!, name: String, monthly_salary: Float): Staff! @update
+  deleteStaff(id: ID!): Staff @field(resolver: "App\\GraphQL\\Mutations\\DeleteEntities@deleteStaff")
+
+  # Project CRUD
+  createProject(name: String!, assumed_hours: Int!): Project! @create
+  updateProject(id: ID!, name: String, assumed_hours: Int): Project! @update
+  deleteProject(id: ID!): Project @field(resolver: "App\\GraphQL\\Mutations\\DeleteEntities@deleteProject")
+
+  # Office Expense CRUD
+  createOfficeExpense(title: String!, monthly_cost: Float!): OfficeExpense! @create
+  updateOfficeExpense(id: ID!, title: String, monthly_cost: Float): OfficeExpense! @update
+  deleteOfficeExpense(id: ID!): OfficeExpense @field(resolver: "App\\GraphQL\\Mutations\\DeleteEntities@deleteOfficeExpense")
+
+  # Payment simulation
+  simulatePayment(project_id: ID!, amount: Float!): Payment! 
+    @field(resolver: "App\\GraphQL\\Mutations\\SimulatePayment")
+      deletePayment(id: ID!): Payment @field(resolver: "App\\GraphQL\\Mutations\\DeleteEntities@deletePayment")
+
+
+  # (Optional) Direct payment mutation if needed later:
+  # createPayment(project_id: ID!, amount: Float!, status: String!): Payment! @create
 }

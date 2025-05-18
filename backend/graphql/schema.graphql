@@ -1,0 +1,56 @@
+type Staff {
+  id: ID!
+  name: String!
+  monthly_salary: Float!
+}
+
+type OfficeExpense {
+  id: ID!
+  title: String!
+  monthly_cost: Float!
+}
+
+type Project {
+  id: ID!
+  name: String!
+  assumed_hours: Int!
+  staff: [Staff!]! @belongsToMany
+}
+
+type Payment {
+  id: ID!
+  amount: Float!
+  status: String!
+  project: Project @belongsTo
+}
+
+type Query {
+  staff: [Staff!]! @all
+  officeExpenses: [OfficeExpense!]! @all
+  projects: [Project!]! @all
+  project(id: ID!): Project @find
+  payments: [Payment!]! @all
+}
+
+input ProjectInput {
+  name: String!
+  assumed_hours: Int!
+  staff_ids: [ID!]!
+}
+
+type CostBreakdown {
+  project: String!
+  hours: Int!
+  staff_cost: Float!
+  office_cost: Float!
+  total_cost: Float!
+  cost_per_hour: Float!
+}
+
+type Mutation {
+  createStaff(name: String!, monthly_salary: Float!): Staff @create
+  createOfficeExpense(title: String!, monthly_cost: Float!): OfficeExpense @create
+  createProject(name: String!, assumed_hours: Int!, staff_ids: [ID!]!): Project @field(resolver: "App\\GraphQL\\Mutations\\CreateProject")
+  simulatePayment(project_id: ID!, amount: Float!): Payment @field(resolver: "App\\GraphQL\\Mutations\\SimulatePayment")
+  calculateCost(project_id: ID!): CostBreakdown @field(resolver: "App\\GraphQL\\Mutations\\CalculateCost")
+}

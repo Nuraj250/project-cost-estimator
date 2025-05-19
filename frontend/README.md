@@ -1,40 +1,97 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# 💎 Project Cost Estimator – Frontend
 
-## Getting Started
+This is the **Next.js** frontend for the **Project Cost Estimation System**. It features a modern glassmorphism UI, GraphQL integration with Apollo Client, and modular views for Projects, Staff, Expenses, and Simulated Payments.
 
-First, run the development server:
+---
+
+## 🚀 Tech Stack
+
+- **Framework**: Next.js (App Router)
+- **UI**: Tailwind CSS with glass UI design
+- **GraphQL Client**: Apollo Client
+- **API**: Laravel + Lighthouse (GraphQL)
+- **Language**: TypeScript
+
+---
+
+## 📁 Folder Structure
+
+```
+
+frontend/
+├── public/                  # Static assets
+├── src/
+│   ├── components/          # Reusable UI components (e.g. ProjectForm)
+│   ├── graphql/             # GraphQL queries/mutations
+│   ├── pages/               # Pages: index.tsx, add.tsx, cost.tsx, simulate.tsx
+│   ├── styles/              # Global CSS
+│   └── utils/               # API config
+├── .env.local               # Apollo client endpoint
+├── tailwind.config.js
+└── tsconfig.json
+
+````
+
+---
+
+## 🔧 Setup Instructions
+
+### 1. Install Dependencies
+
+```bash
+cd frontend
+npm install
+````
+
+---
+
+### 2. Configure Environment
+
+Create a `.env.local` file:
+
+```env
+NEXT_PUBLIC_GRAPHQL_ENDPOINT=http://localhost:8000/graphql
+```
+
+Update this if your Laravel backend runs on a different host or port.
+
+---
+
+### 3. Run the App
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Visit [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+---
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## 🧠 Features
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+* 🧱 **Project Listing**
+* 🆕 **Add Project** with staff, hours, auto-expense and payment calculation
+* 📊 **View Cost Summary**
+* 💸 **Simulate Payment**
+* 🌈 Beautiful **glass UI design** with dark/light contrast
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🔗 Backend
 
-To learn more about Next.js, take a look at the following resources:
+Make sure the backend is running: [Laravel + Lighthouse GraphQL Server](http://localhost:8000/graphql)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🛠 Dev Tips
 
-## Deploy on Vercel
+* GraphQL queries and mutations are organized in `/src/graphql/`
+* UI components like `ProjectForm` are in `/src/components/`
+* Use `Apollo DevTools` to inspect queries in browser
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+## 🤝 Credits
+
+Developed with ❤️ using Next.js, Tailwind, and Apollo by Nuraj.
+```

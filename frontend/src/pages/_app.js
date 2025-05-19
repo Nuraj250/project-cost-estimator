@@ -1,11 +1,14 @@
 import "../styles/globals.css";
 import { ApolloProvider } from "@apollo/client";
 import client from "../lib/apolloClient";
+import Layout from "../components/Layout";
 
 export default function App({ Component, pageProps }) {
-    return (
-    <ApolloProvider client={client}>
-      <Component {...pageProps} />
-    </ApolloProvider>
+  return (
+    <Layout>
+      <ApolloProvider client={client}>
+        <Component {...pageProps} />
+      </ApolloProvider>
+    </Layout>
   );
 }

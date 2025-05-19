@@ -2,6 +2,7 @@ import { useQuery } from '@apollo/client';
 import { GET_PROJECTS } from '../graphql/queries';
 import GlassCard from '../components/GlassCard';
 import React from 'react';
+import Link from 'next/link';
 
 export default function Home() {
   const { data, loading, error } = useQuery(GET_PROJECTS);

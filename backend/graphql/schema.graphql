@@ -38,7 +38,7 @@ type Payment {
 # Queries
 type Query {
   staff: [Staff!]! @all
-  projects: [Project!]! @field(resolver: "ProjectQuery@getAllProjects")
+  projects: [Project!]! @all
   expenses: [OfficeExpense!]! @all
   payments: [Payment!]! @all
 }
@@ -63,8 +63,6 @@ type Mutation {
   # Payment simulation
   simulatePayment(project_id: ID!, amount: Float!): Payment! 
     @field(resolver: "App\\GraphQL\\Mutations\\SimulatePayment")
-      deletePayment(id: ID!): Payment @field(resolver: "App\\GraphQL\\Mutations\\DeleteEntities@deletePayment")
-
 
   # (Optional) Direct payment mutation if needed later:
   # createPayment(project_id: ID!, amount: Float!, status: String!): Payment! @create

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Project extends Model
 {
-    protected $fillable = ['name', 'assumed_hours'];
+    protected $fillable = ['name', 'assumed_hours', 'amount', 'description', 'status', 'project_id'];
 
     public function staff()
     {

@@ -1,0 +1,262 @@
+{
+	"info": {
+		"_postman_id": "e7f9757f-246c-4d61-9ace-966d8524790f",
+		"name": "Project Cost Estimator (GraphQL)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "10196188"
+	},
+	"item": [
+		{
+			"name": "Create Staff",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"query\": \"mutation { createStaff(name: \\\"John Doe\\\", monthly_salary: 3000) { id name } }\"}"
+				},
+				"url": "http://127.0.0.1:8000/graphql"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Staff",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"query\": \"mutation { updateStaff(id: 1, name: \\\"John Smith\\\", monthly_salary: 3200) { id name } }\"}"
+				},
+				"url": "http://127.0.0.1:8000/graphql"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Staff",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"query\": \"mutation { deleteStaff(id: 1) { id name } }\"}"
+				},
+				"url": "http://127.0.0.1:8000/graphql"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Project",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"query\": \"mutation { createProject(name: \\\"Website Redesign\\\", assumed_hours: 120) { id name } }\"}"
+				},
+				"url": "http://127.0.0.1:8000/graphql"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Project",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"query\": \"mutation { updateProject(id: 1, name: \\\"Landing Page Project\\\", assumed_hours: 100) { id name } }\"}"
+				},
+				"url": "http://127.0.0.1:8000/graphql"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Project",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"query\": \"mutation { deleteProject(id: 1) { id } }\"}"
+				},
+				"url": "http://127.0.0.1:8000/graphql"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Office Expense",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"query\": \"mutation { createOfficeExpense(title: \\\"Electricity\\\", monthly_cost: 150) { id title } }\"}"
+				},
+				"url": "http://127.0.0.1:8000/graphql"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Office Expense",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"query\": \"mutation { updateOfficeExpense(id: 1, title: \\\"Water\\\", monthly_cost: 50) { id title } }\"}"
+				},
+				"url": "{{base_url}}/graphql"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Office Expense",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"query\": \"mutation { deleteOfficeExpense(id: 1) { id } }\"}"
+				},
+				"url": "http://127.0.0.1:8000/graphql"
+			},
+			"response": []
+		},
+		{
+			"name": "Simulate Payment",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"query\": \"mutation { simulatePayment(project_id: 1, amount: 3625) { id amount status } }\"}"
+				},
+				"url": "http://127.0.0.1:8000/graphql"
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Staff",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"query\": \"query { staff { id name monthly_salary } }\"}"
+				},
+				"url": "http://127.0.0.1:8000/graphql"
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Projects",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"query\": \"query {  getAllProjects { id  name  assumed_hours  created_at  updated_at  staff {  id  name  }  expenses {  id  amount  description } payments {      id      amount      status    }  }}\"}"
+				},
+				"url": "http://127.0.0.1:8000/graphql"
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Office Expenses",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"query\": \"query { expenses { id title monthly_cost } }\"}"
+				},
+				"url": "http://127.0.0.1:8000/graphql"
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Payments",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"query\": \"query { payments { id amount status project { name } } }\"}"
+				},
+				"url": "http://127.0.0.1:8000/graphql"
+			},
+			"response": []
+		}
+	]
+}
